@@ -429,12 +429,20 @@ sap.ui.define(["./BaseController", "../model/formatter", "sap/m/Dialog", "sap/m/
             var n = this.OBJtoXML(o);
             var d;
             var l = new XMLHttpRequest;
-            l.open("POST", r, true);
+            
+            //XMLHttpRequest.open(method, url, async) onde async = true or false
+            //l.open("OPTIONS",r,false);
+            //l.setRequestHeader("Content-Type","application/json");
+            //l.setRequestHeader("APIKey","TESTE");
+            //l.send(n);       
+            
+            l.open("POST", r, false);
+
             l.send(n);
             l.onreadystatechange = function() {
                 d = l.status;
                 if (d === 200) {} else {
-                    sap.m.MessageBox.error("Erro de comunicação API - > envioCargos")
+                    sap.m.MessageBox.error("Erro de comunicação API  - >  envioCargos")
                 }
             }
         },
@@ -500,12 +508,14 @@ sap.ui.define(["./BaseController", "../model/formatter", "sap/m/Dialog", "sap/m/
             var b = this.OBJtoXML(g);
             var f;
             var v = new XMLHttpRequest;
-            v.open("POST", o, true);
+
+            v.open("POST", o, false);
+            
             v.send(b);
             v.onreadystatechange = function() {
                 f = v.status;
                 if (f === 200) {} else {
-                    sap.m.MessageBox.error("Erro de comunicação API - > envioPosicoes")
+                    sap.m.MessageBox.error("Erro de comunicação API  - >  envioPosicoes")
                 }
             }
         },
